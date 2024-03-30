@@ -22,9 +22,7 @@ export default class App extends Component {
     currentTags: null,
   };
 
-  ref = React.createRef(null);
-
-  async componentDidUpdate(prevProps, prevState) {
+  async componentDidUpdate(prevProps, prevState, snapshot) {
     const { query, page } = this.state;
     if (prevState.query !== query) {
       this.setState({ loading: true });
@@ -42,7 +40,6 @@ export default class App extends Component {
       } catch (err) {
         toast.error(err);
       } finally {
-        // toast.success('Your request is ready');
         this.setState({ loading: false });
       }
     }
